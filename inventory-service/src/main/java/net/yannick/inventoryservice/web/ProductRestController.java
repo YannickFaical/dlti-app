@@ -2,6 +2,7 @@ package net.yannick.inventoryservice.web;
 
 import net.yannick.inventoryservice.entity.Product;
 import net.yannick.inventoryservice.repository.ProductRepository;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +26,12 @@ public class ProductRestController {
     @GetMapping("/products/{id}")
     public Product  productById(@PathVariable String id){
         return productRepository.findById(id).get();
+    }
+
+
+    @GetMapping("/auth")
+    public Authentication authentication(Authentication authentication){
+        return authentication;
     }
 
 }
